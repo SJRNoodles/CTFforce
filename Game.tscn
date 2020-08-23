@@ -57,7 +57,7 @@ anims/Gun_bump = SubResource( 3 )
 position = Vector2( 0.741232, 0.294716 )
 scale = Vector2( 1.26908, 1.61285 )
 texture = SubResource( 2 )
-offset = Vector2( 43.9149, 1.20901 )
+offset = Vector2( 46.6148, 1.20901 )
 
 [node name="body" type="Sprite" parent="player"]
 position = Vector2( 9.34412, -0.247986 )
