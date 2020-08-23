@@ -1,13 +1,35 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spawner.gd" type="Script" id=2]
+[ext_resource path="res://txture/game.png" type="Texture" id=3]
+[ext_resource path="res://player.gd" type="Script" id=4]
 
-[sub_resource type="PrismMesh" id=1]
+[sub_resource type="Animation" id=3]
+resource_name = "Gun_bump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("gun:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 2.37842 ),
+"update": 0,
+"values": [ Vector2( 67.8101, 1.20904 ), Vector2( 40, 1.209 ) ]
+}
 
-[sub_resource type="MeshTexture" id=2]
-mesh = SubResource( 1 )
-image_size = Vector2( 5, 5 )
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 20, 115, 90, 30 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 15, 15, 85, 85 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,12 +44,24 @@ autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.25, 1.25 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="player" type="KinematicBody2D" parent="."]
+script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
-position = Vector2( 1.09576, 0.571236 )
-scale = Vector2( 284.162, 167.122 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+playback_speed = 2.0
+anims/Gun_bump = SubResource( 3 )
+
+[node name="gun" type="Sprite" parent="player"]
+position = Vector2( 0.741232, 0.294716 )
+scale = Vector2( 1.26908, 1.61285 )
 texture = SubResource( 2 )
+offset = Vector2( 46.6148, 1.20901 )
+
+[node name="body" type="Sprite" parent="player"]
+position = Vector2( 9.34412, -0.247986 )
+scale = Vector2( 1.71497, 1.57816 )
+texture = SubResource( 1 )
+region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]
