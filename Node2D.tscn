@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://txture/blue_plr.png" type="Texture" id=1]
-[ext_resource path="res://Sprite.gd" type="Script" id=2]
+[ext_resource path="res://plr.gd" type="Script" id=1]
+[ext_resource path="res://txture/game.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 126.972, 12.9845, 87.9043, 86.1463 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 88, 88 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 499.5, 294.5 )
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 464.5, 297.5 )
 scale = Vector2( 2.0625, 2.0625 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 462, 299 )
+shape = SubResource( 2 )
