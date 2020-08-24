@@ -11,12 +11,12 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("gun:offset")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.5, 2.37842 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 67.8101, 1.20904 ), Vector2( 40, 1.209 ) ]
 }
@@ -57,7 +57,7 @@ anims/Gun_bump = SubResource( 1 )
 position = Vector2( 0.741232, 0.294716 )
 scale = Vector2( 1.26908, 1.61285 )
 texture = SubResource( 2 )
-offset = Vector2( 46.6148, 1.20901 )
+offset = Vector2( 52.1294, 1.20902 )
 
 [node name="body" type="Sprite" parent="player"]
 position = Vector2( 9.34412, -0.247986 )
