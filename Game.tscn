@@ -42,10 +42,6 @@ script = ExtResource( 2 )
 [node name="rate_ctrlr" type="Timer" parent="Asteroid Spawner"]
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 1.25, 1.25 )
-
 [node name="player" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 
@@ -64,4 +60,8 @@ position = Vector2( 9.34412, -0.247986 )
 scale = Vector2( 1.71497, 1.57816 )
 texture = SubResource( 3 )
 region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+current = true
+zoom = Vector2( 2, 2 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]
