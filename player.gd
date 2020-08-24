@@ -8,9 +8,9 @@ var v = Vector2(0,0)
 var g
 var b_scene
 var vel = Vector2()
-var cap = 600
+var cap = 1000
 var accel = 35
-var fric = 25.0
+var fric = 4
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	b_scene = preload("Bullet.tscn")
@@ -52,8 +52,9 @@ func _physics_process(delta):
 			vel.x = -cap
 			pass
 		pass
-	if Input.is_action_just_pressed("CTFF_shoot"):
+	if Input.is_action_just_pressed("CTFF_shoot") and $rate_ctrlr.time_left < 0.0000001:
 		get_parent().add_child(b_scene.instance())
+		$rate_ctrlr.start()
 		pass
 	if Input.is_action_pressed("ui_left"):
 		self.rotate(-2 * delta)
@@ -61,12 +62,39 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		rotate(2 * delta)
 		pass
-	if vel.x < 0 or vel.y < 0:
-		vel += Vector2(fric,fric)
+	if vel.x < 0:
+		vel += Vector2(fric,0)
+		if vel.x > 0:
+			vel.x = 0
+			pass
 		pass
-	if vel.x > 0 or vel.y > 0:
-		vel -= Vector2(fric,fric)
+	if vel.x > 0:
+		vel -= Vector2(fric,0)
+		if vel.x < 0:
+			vel.x = 0
+			pass
+		pass
+	if vel.y < 0:
+		vel += Vector2(0,fric)
+		if vel.y > 0:
+			vel.y = 0
+			pass
+		pass
+	if vel.y > 0:
+		
+		vel -= Vector2(0,fric)
+		if vel.y < 0:
+			vel.y = 0
+			pass
 		pass
 	vel = move_and_slide(vel, Vector2(0,-1))
-	print(g.offset)
+	print(vel)
 	pass
+
+
+func _on_rate_ctrlr_timeout():
+	get_parent().add_child(b_scene.instance())
+	if Input.is_action_pressed("CTFF_shoot"):
+		$rate_ctrlr.start()
+		pass
+	pass # Replace with function body.
