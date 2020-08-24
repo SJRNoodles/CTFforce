@@ -5,12 +5,12 @@ extends Area2D
 # var a = 2
 # var b = "text"
 var my_gun
-var speed = 350
+var speed = 1000
 var offset = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	my_gun =get_parent().get_parent().get_node("gun")
-	position = Vector2(cos(my_gun.rotation) * offset, sin(my_gun.rotation) * offset)
+	my_gun = get_node("/root/Node2D/player/")
+	position = my_gun.position + Vector2(cos(my_gun.rotation) * offset, sin(my_gun.rotation) * offset)
 	rotation = my_gun.rotation
 	pass # Replace with function body.
 

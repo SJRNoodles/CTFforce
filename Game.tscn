@@ -17,12 +17,12 @@ loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("gun:offset")
 tracks/0/interp = 1
-tracks/0/loop_wrap = false
+tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.5, 2.37842 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 67.8101, 1.20904 ), Vector2( 40, 1.209 ) ]
 }
@@ -51,10 +51,6 @@ script = ExtResource( 2 )
 [node name="rate_ctrlr" type="Timer" parent="Asteroid Spawner"]
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 1.25, 1.25 )
-
 [node name="player" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 
@@ -66,11 +62,15 @@ anims/Gun_bump = SubResource( 1 )
 position = Vector2( 0.741232, 0.294716 )
 scale = Vector2( 1.26908, 1.61285 )
 texture = SubResource( 2 )
-offset = Vector2( 46.6148, 1.20901 )
+offset = Vector2( 52.1294, 1.20902 )
 
 [node name="body" type="Sprite" parent="player"]
 position = Vector2( 9.34412, -0.247986 )
 scale = Vector2( 1.71497, 1.57816 )
 texture = SubResource( 3 )
 region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+current = true
+zoom = Vector2( 2.5, 2.5 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]

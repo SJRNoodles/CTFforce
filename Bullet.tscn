@@ -11,6 +11,8 @@ region = Rect2( 125, 120, 45, 20 )
 [node name="Bullet" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
+light_mask = -2147483647
+z_index = -1
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Area2D"]
