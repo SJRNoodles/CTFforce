@@ -5,7 +5,7 @@
 [ext_resource path="res://txture/game.png" type="Texture" id=3]
 [ext_resource path="res://player.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Gun_bump"
 loop = true
 tracks/0/type = "value"
@@ -26,7 +26,7 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 20, 115, 90, 30 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 15, 15, 85, 85 )
@@ -51,7 +51,7 @@ script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 playback_speed = 2.0
-anims/Gun_bump = SubResource( 3 )
+anims/Gun_bump = SubResource( 1 )
 
 [node name="gun" type="Sprite" parent="player"]
 position = Vector2( 0.741232, 0.294716 )
@@ -62,6 +62,6 @@ offset = Vector2( 46.6148, 1.20901 )
 [node name="body" type="Sprite" parent="player"]
 position = Vector2( 9.34412, -0.247986 )
 scale = Vector2( 1.71497, 1.57816 )
-texture = SubResource( 1 )
+texture = SubResource( 3 )
 region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]
