@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spawner.gd" type="Script" id=2]
@@ -6,13 +6,12 @@
 [ext_resource path="res://player.gd" type="Script" id=4]
 [ext_resource path="res://txture/asteroid.png" type="Texture" id=5]
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 2.01611, 33.3516, 392.205, 373.655 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "Gun_bump"
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("gun:offset")
@@ -27,15 +26,20 @@ tracks/0/keys = {
 "values": [ Vector2( 67.8101, 1.20904 ), Vector2( 40, 1.209 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 20, 115, 90, 30 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 15, 15, 85, 85 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 222, 16, 9, 25 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -43,7 +47,7 @@ region = Rect2( 15, 15, 85, 85 )
 position = Vector2( 348, 162 )
 
 [node name="Sprite" type="Sprite" parent="Asteroid"]
-texture = SubResource( 4 )
+texture = SubResource( 1 )
 
 [node name="Asteroid Spawner" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -56,21 +60,35 @@ script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 playback_speed = 2.0
-anims/Gun_bump = SubResource( 1 )
+anims/Gun_bump = SubResource( 2 )
 
 [node name="gun" type="Sprite" parent="player"]
 position = Vector2( 0.741232, 0.294716 )
 scale = Vector2( 1.26908, 1.61285 )
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 offset = Vector2( 52.1294, 1.20902 )
 
 [node name="body" type="Sprite" parent="player"]
-position = Vector2( 9.34412, -0.247986 )
-scale = Vector2( 1.71497, 1.57816 )
-texture = SubResource( 3 )
+position = Vector2( 0.344119, 0.752014 )
+scale = Vector2( 1.50321, 1.57816 )
+texture = SubResource( 4 )
 region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 current = true
 zoom = Vector2( 2.5, 2.5 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+position = Vector2( 40.4707, 18.7595 )
+rotation = 1.5708
+scale = Vector2( 1.73412, 1.53745 )
+texture = SubResource( 5 )
+offset = Vector2( 0, 5.76139 )
+
+[node name="Sprite2" type="Sprite" parent="player"]
+position = Vector2( 40.8952, -15.338 )
+rotation = 1.5708
+scale = Vector2( 1.76034, 1.5607 )
+texture = SubResource( 5 )
+offset = Vector2( 0, 5.76139 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]

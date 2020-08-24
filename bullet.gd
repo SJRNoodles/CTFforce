@@ -5,7 +5,7 @@ extends Area2D
 # var a = 2
 # var b = "text"
 var my_gun
-var speed = 1000
+var speed = 3000
 var offset = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
