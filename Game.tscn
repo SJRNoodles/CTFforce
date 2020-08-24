@@ -63,5 +63,5 @@ region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 2.5, 2.5 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]

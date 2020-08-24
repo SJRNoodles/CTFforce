@@ -10,7 +10,7 @@ var b_scene
 var vel = Vector2()
 var cap = 600
 var accel = 35
-var fric = 15
+var fric = 25.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	b_scene = preload("Bullet.tscn")
