@@ -10,6 +10,7 @@ var H_sz
 var timer
 var seed_input
 var speed
+var health
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = rand_range(-2,2)
@@ -21,14 +22,17 @@ func _ready():
 
 func set_mass(size):
 	if size >= 1 and size < 2:
+		health = 40
 		S_sz.show()
 		L_sz.hide()
 		H_sz.hide()
 	elif size >= 2 and size < 3:
+		health = 60
 		L_sz.show()
 		S_sz.hide()
 		H_sz.hide()
 	else:
+		health = 100
 		H_sz.show()
 		S_sz.hide()
 		L_sz.hide()
@@ -36,5 +40,13 @@ func set_mass(size):
 	pass
 	
 func _process(delta):
+	for area in get_overlapping_areas():
+		if area.name == "bullet":
+			health -= 1
+			pass
+		pass
+	if health <= 0:
+		self.queue_free()
+		pass
 	rotate(speed * delta)
 	pass

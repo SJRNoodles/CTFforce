@@ -22,7 +22,7 @@ func _process(delta):
 
 
 func _on_rate_ctrlr_timeout():
-	asteroid_amt += 1
+	asteroid_amt = get_child_count() - 1
 	if asteroid_amt <= limit:
 		a_node = asteroid.instance()
 		a_node.position = Vector2(rand_range(-4096, 4096), rand_range(-4096, 4096))

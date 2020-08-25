@@ -17,5 +17,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	for a in get_overlapping_areas():
+		if a.name == "Asteroid":
+			self.queue_free()
+			pass
+		pass
 	self.position += Vector2(speed * cos(rotation) * delta, speed*sin(rotation)*delta )
 	pass
