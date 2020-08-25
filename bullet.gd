@@ -18,9 +18,21 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for a in get_overlapping_areas():
+		print("Overlapping")
 		if a.name == "Asteroid":
+			print("hit an asteroid")
 			self.queue_free()
 			pass
 		pass
 	self.position += Vector2(speed * cos(rotation) * delta, speed*sin(rotation)*delta )
 	pass
+
+
+func _on_lifespan_timeout():
+	$AnimationPlayer.play("fade")
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue_free()
+	pass # Replace with function body.

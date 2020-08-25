@@ -92,7 +92,6 @@ func _physics_process(delta):
 			pass
 		pass
 	vel = move_and_slide(vel, Vector2(0,-1))
-	print(vel)
 	pass
 
 

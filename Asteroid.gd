@@ -21,18 +21,21 @@ func _ready():
 	pass # Replace with function body.
 
 func set_mass(size):
-	if size >= 1 and size < 2:
-		health = 40
+	if size >= 1 and size < 2.6:
+		health = 20
+		$S_col.disabled = false
 		S_sz.show()
 		L_sz.hide()
 		H_sz.hide()
-	elif size >= 2 and size < 3:
-		health = 60
+	elif size >= 2.6 and size < 3.6:
+		$L_col.disabled = false
+		health = 40
 		L_sz.show()
 		S_sz.hide()
 		H_sz.hide()
 	else:
-		health = 100
+		$H_col.disabled = false
+		health = 80
 		H_sz.show()
 		S_sz.hide()
 		L_sz.hide()
