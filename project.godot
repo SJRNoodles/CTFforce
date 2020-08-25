@@ -15,9 +15,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Meteor-fights"
+config/name="CTFforce"
 run/main_scene="res://Game.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
+<<<<<<< HEAD
 
 [importer_defaults]
 
@@ -25,6 +26,9 @@ ogg_vorbis={
 "loop": false,
 "loop_offset": 0
 }
+=======
+config/icon="res://txture/ico.png"
+>>>>>>> 0944288f53ed54cd8a1ae337288bb34cd4e38ee3
 
 [input]
 
