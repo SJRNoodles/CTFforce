@@ -54,6 +54,7 @@ func _physics_process(delta):
 			pass
 		pass
 	if Input.is_action_just_pressed("CTFF_shoot") and $rate_ctrlr.time_left < 0.0000001:
+		$shoot.play()
 		get_parent().add_child(b_scene.instance())
 		$rate_ctrlr.start()
 		pass
@@ -96,6 +97,7 @@ func _physics_process(delta):
 
 
 func _on_rate_ctrlr_timeout():
+	$shoot.play()
 	get_parent().add_child(b_scene.instance())
 	if Input.is_action_pressed("CTFF_shoot"):
 		$rate_ctrlr.start()

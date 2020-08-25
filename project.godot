@@ -18,7 +18,13 @@ _global_script_class_icons={
 config/name="Meteor-fights"
 run/main_scene="res://Game.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
-config/icon="res://icon.png"
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": false,
+"loop_offset": 0
+}
 
 [input]
 
