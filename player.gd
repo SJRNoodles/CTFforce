@@ -62,11 +62,11 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_pressed("ui_left"):
 		rotate(-3 * delta)
-		$body.rotation -= 5 * delta
+		$body.rotation -= 0 * delta
 		pass
 	if Input.is_action_pressed("ui_right"):
 		rotate(3 * delta)
-		$body.rotation += 5 * delta
+		$body.rotation += 0 * delta
 		pass
 	if vel.x < 0:
 		vel += Vector2(fric,0)

@@ -49,6 +49,7 @@ func _process(delta):
 
 func _on_lifespan_timeout():
 	$AnimationPlayer.play("fade")
+	self.queue_free()
 	pass # Replace with function body.
 
 

@@ -44,7 +44,7 @@ texture = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="lifespan" type="Timer" parent="bullet"]
-wait_time = 0.25
+wait_time = 0.396
 one_shot = true
 autostart = true
 
