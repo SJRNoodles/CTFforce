@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Asteroid.gd" type="Script" id=1]
 [ext_resource path="res://txture/asteroid.png" type="Texture" id=2]
+[ext_resource path="res://sounds/Grenade Explosion-SoundBible.com-2100581469.wav" type="AudioStream" id=3]
+[ext_resource path="res://txture/particles.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -26,6 +28,13 @@ extents = Vector2( 59.6172, 36.2153 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 37.1678, 20.5008 )
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 31.4551, 220.372, 146.061, 147.493 )
 
 [node name="Asteroid" type="Area2D"]
 script = ExtResource( 1 )
@@ -53,3 +62,21 @@ disabled = true
 [node name="S_col" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
 disabled = true
+
+[node name="explode" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="particles" type="CPUParticles2D" parent="."]
+material = SubResource( 7 )
+emitting = false
+amount = 64
+explosiveness = 1.0
+lifetime_randomness = 0.53
+texture = SubResource( 8 )
+emission_shape = 1
+emission_sphere_radius = 72.56
+spread = 180.0
+initial_velocity = 408.6
+damping_random = 1.0
+angle = 720.0
+angle_random = 1.0

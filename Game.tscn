@@ -76,6 +76,7 @@ position = Vector2( 348, 162 )
 script = ExtResource( 2 )
 
 [node name="rate_ctrlr" type="Timer" parent="Asteroid Spawner"]
+wait_time = 0.401
 autostart = true
 
 [node name="player" type="KinematicBody2D" parent="."]

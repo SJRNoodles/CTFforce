@@ -11,6 +11,26 @@ var timer
 var seed_input
 var speed
 var health
+var exploded = 0
+
+func wait(s):
+	exploded = 1
+	$explode.play()
+	L_sz.hide()
+	S_sz.hide()
+	H_sz.hide()
+	var t = Timer.new()
+	t.set_wait_time(s)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+	t.queue_free()
+	self.queue_free()
+pass
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = rand_range(-2,2)
@@ -52,11 +72,19 @@ func _process(delta):
 	for area in get_overlapping_areas():
 		if area.name == "bullet":
 			print(self.name)
-			health -= 1
+			if exploded == 0:
+				health -= 1
+			pass
 			pass
 		pass
 	if health <= 0:
-		self.queue_free()
+		if exploded == 0:
+			$particles.emitting = true
+			$H_col.disabled = true
+			$S_col.disabled = true
+			$L_col.disabled = true
+			wait(1)
+		pass
 		pass
 	rotate(speed * delta)
 	pass
