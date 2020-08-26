@@ -15,6 +15,7 @@ var fric = 4
 func _ready():
 	b_scene = preload("Bullet.tscn")
 	g = $gun
+	$AnimationPlayer.get_animation("Gun_bump").loop = false
 	pass # Replace with function body.
 
 
@@ -55,6 +56,7 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_just_pressed("CTFF_shoot") and $rate_ctrlr.time_left < 0.0000001:
 		$shoot.play()
+		$AnimationPlayer.play("Gun_bump")
 		get_parent().add_child(b_scene.instance())
 		$rate_ctrlr.start()
 		pass
@@ -100,5 +102,8 @@ func _on_rate_ctrlr_timeout():
 	get_parent().add_child(b_scene.instance())
 	if Input.is_action_pressed("CTFF_shoot"):
 		$rate_ctrlr.start()
+		$AnimationPlayer.play("Gun_bump")
 		pass
 	pass # Replace with function body.
+	
+

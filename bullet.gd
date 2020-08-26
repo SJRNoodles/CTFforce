@@ -19,7 +19,10 @@ func _ready():
 func _process(delta):
 	for a in get_overlapping_areas():
 		print("Overlapping")
+		
+		
 		if a.name == "Asteroid":
+			
 			print("hit an asteroid")
 			self.queue_free()
 			pass

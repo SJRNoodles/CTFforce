@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Spawner.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "Gun_bump"
+length = 0.1
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("gun:offset")
@@ -16,10 +17,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 67.8101, 1.20904 ), Vector2( 40, 1.209 ) ]
+"values": [ Vector2( 40, 1.209 ), Vector2( 67.8101, 1.20904 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fire:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.25082, 1.84848 ), Vector2( 0, 1.848 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fire:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 163.646, 4.57764e-05 ), Vector2( 144.555, 3.53557 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=2]
@@ -31,6 +56,16 @@ region = Rect2( 20, 115, 90, 30 )
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 15, 15, 85, 85 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 16, 200, 91, 42 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 219.263, 16.4733, 14.9684, 25.1469 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -47,18 +82,17 @@ autostart = true
 script = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
-playback_speed = 2.0
 anims/Gun_bump = SubResource( 1 )
 
 [node name="gun" type="Sprite" parent="player"]
 position = Vector2( 0.741232, 0.294716 )
 scale = Vector2( 1.26908, 1.61285 )
 texture = SubResource( 2 )
-offset = Vector2( 52.1294, 1.20902 )
+offset = Vector2( 64.575, 1.20904 )
 
 [node name="body" type="Sprite" parent="player"]
-position = Vector2( 9.34412, -0.247986 )
-scale = Vector2( 1.71497, 1.57816 )
+position = Vector2( 15.0941, -0.247986 )
+scale = Vector2( 1.578, 1.578 )
 texture = SubResource( 3 )
 region_rect = Rect2( 100.684, 52.8947, 346.263, 48.1579 )
 
@@ -72,5 +106,22 @@ one_shot = true
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="player"]
 stream = ExtResource( 5 )
+
+[node name="fire" type="Sprite" parent="player"]
+position = Vector2( 144.725, -23.0387 )
+scale = Vector2( 3.33308e-05, 1.84848 )
+texture = SubResource( 4 )
+
+[node name="eye" type="Sprite" parent="player"]
+position = Vector2( 34.7838, 18.3056 )
+rotation = 1.5708
+scale = Vector2( 1.60714, 1.60714 )
+texture = SubResource( 5 )
+
+[node name="eye2" type="Sprite" parent="player"]
+position = Vector2( 34.1892, -17.6679 )
+rotation = 1.5708
+scale = Vector2( 1.60714, 1.60714 )
+texture = SubResource( 5 )
 [connection signal="timeout" from="Asteroid Spawner/rate_ctrlr" to="Asteroid Spawner" method="_on_rate_ctrlr_timeout"]
 [connection signal="timeout" from="player/rate_ctrlr" to="player" method="_on_rate_ctrlr_timeout"]
