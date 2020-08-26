@@ -1,5 +1,5 @@
-extends Area2D
 
+extends Area2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,7 +18,7 @@ func capture():
 	
 	self.position = $"/root/Node2D/player".position
 	
-	if $"/root/Node2D/red_flag".touching_flag2 == true:
+	if $"/root/Node2D/blue_flag".touching_flag2 == true:
 		self.position = pos
 		captured = false
 		pass
@@ -35,7 +35,7 @@ func _process(delta):
 		pass
 	for area in get_overlapping_areas():
 		#capture2
-		if area.name == "red_flag":
+		if area.name == "blue_flag":
 			if captured == false:
 				touching_flag2 = true
 				area.position = area.pos
@@ -46,10 +46,11 @@ func _process(delta):
 		print(area.name == "hitbox")
 		if area.name == "hitbox":
 			if captured == false:
-				if $"/root/Node2D/player".team == "red":
+				if $"/root/Node2D/player".team == "blue":
 					capture()
 					pass
 				pass
 			pass
 		pass
 	pass
+
