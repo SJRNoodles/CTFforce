@@ -23,6 +23,10 @@ func _process(delta):
 		
 		if a.name == "Asteroid" or a.name.split("@", false)[0] == "Asteroid":
 			print("hit an asteroid")
+			get_parent().queue_free()
+			var hit_sfx = $hit
+			remove_child(hit_sfx)
+			get_parent().get_parent().add_child(hit_sfx)
 			self.queue_free()
 			pass
 		pass
