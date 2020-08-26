@@ -24,17 +24,23 @@ func set_mass(size):
 	if size >= 1 and size < 2.6:
 		health = 20
 		$S_col.disabled = false
+		$L_col.disabled = true
+		$H_col.disabled = true
 		S_sz.show()
 		L_sz.hide()
 		H_sz.hide()
 	elif size >= 2.6 and size < 3.6:
 		$L_col.disabled = false
+		$S_col.disabled = true
+		$H_col.disabled = true
 		health = 40
 		L_sz.show()
 		S_sz.hide()
 		H_sz.hide()
 	else:
 		$H_col.disabled = false
+		$S_col.disabled = true
+		$L_col.disabled = true
 		health = 80
 		H_sz.show()
 		S_sz.hide()
@@ -45,6 +51,7 @@ func set_mass(size):
 func _process(delta):
 	for area in get_overlapping_areas():
 		if area.name == "bullet":
+			print(self.name)
 			health -= 1
 			pass
 		pass
