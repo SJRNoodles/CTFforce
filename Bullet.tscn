@@ -37,9 +37,6 @@ material = SubResource( 1 )
 z_index = -1
 script = ExtResource( 2 )
 
-[node name="hit" type="AudioStreamPlayer2D" parent="bullet"]
-stream = ExtResource( 3 )
-
 [node name="Sprite" type="Sprite" parent="bullet"]
 texture = SubResource( 2 )
 
@@ -47,12 +44,15 @@ texture = SubResource( 2 )
 shape = SubResource( 3 )
 
 [node name="lifespan" type="Timer" parent="bullet"]
-wait_time = 0.25
+wait_time = 0.396
 one_shot = true
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="bullet"]
 playback_speed = 1.5
 anims/fade = SubResource( 4 )
+
+[node name="hit" type="AudioStreamPlayer" parent="bullet"]
+stream = ExtResource( 3 )
 [connection signal="timeout" from="bullet/lifespan" to="bullet" method="_on_lifespan_timeout"]
 [connection signal="animation_finished" from="bullet/AnimationPlayer" to="bullet" method="_on_AnimationPlayer_animation_finished"]

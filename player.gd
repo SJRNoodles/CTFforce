@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -11,17 +10,38 @@ var vel = Vector2()
 var cap = 800
 var accel = 35
 var fric = 4
+var determi
+var team = "red"
+var health = 20
+
+func rand():
+	randomize()
+	determi = randi()%60
+	if determi >= 30:
+		team = "blue"
+		$red.visible = false
+		
+		pass
+	if determi <= 29:
+		team = "red"
+		$blue.visible = false
+		
+		pass
+	pass
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	b_scene = preload("Bullet.tscn")
 	g = $gun
+	rand()
+	print(team)
 	$AnimationPlayer.get_animation("Gun_bump").loop = false
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	$body.rotation = -rotation
+	$red.rotation = -rotation
+	$blue.rotation = -rotation
 	if Input.is_action_pressed("ui_up"):
 		vel.y += sin(rotation) * accel
 		vel.x += cos(rotation) * accel
@@ -62,11 +82,13 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_pressed("ui_left"):
 		rotate(-3 * delta)
-		$body.rotation -= 5 * delta
+		$red.rotation -= 0 * delta
+		$blue.rotation -= 0 * delta
 		pass
 	if Input.is_action_pressed("ui_right"):
 		rotate(3 * delta)
-		$body.rotation += 5 * delta
+		$red.rotation += 0 * delta
+		$blue.rotation += 0 * delta
 		pass
 	if vel.x < 0:
 		vel += Vector2(fric,0)
